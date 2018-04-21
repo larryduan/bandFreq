@@ -1,0 +1,24 @@
+<!--tdsfreq.wxml-->
+<text>TDSCDMA Frequency Calculator</text>
+<view class="containerTDS">
+  <view class="bandBtnTDS">
+    <button id="B34" bindtap="toggleB34" style="background-color:{{tdsb34color}}">B34/A</button>
+  </view>
+  <view class="bandBtnTDS">
+    <button id="B39" bindtap="toggleB39" style="background-color:{{tdsb39color}}">B39/F</button>
+  </view>
+  <view class="bandBtnTDS">
+    <button id="B40" bindtap="toggleB40" style="background-color:{{tdsb40color}}">B40/E</button>
+  </view>
+</view>
+<view>
+  <text>Input channel No.：</text><text>{{chanPrompt}}</text>
+  <input bindinput="inputChan" type="number" style="color:green" placeholder='{{arfcnRange}}'></input>
+
+  <button bindtap="calculateFreq">get frequency</button>
+  <view>
+    <text>Frequency:</text>
+    <text style="color:green">{{textFreqUL}}</text>
+    <text>MHz</text>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+<!--gsmfreq.wxml-->
+<text>GSM Frequency Calculator</text>
+<view class="containerGSM">
+  <view class="bandBtnGSM">
+    <button id="gsm850" bindtap="toggle850" style="background-color:{{gsm850color}}">GSM850/B5</button>
+  </view>
+  <view class="bandBtnGSM">
+      <button id="gsm900" bindtap="toggle900" style="background-color:{{gsm900color}}">EGSM900/B8</button>
+  </view>
+</view>
+<view class="containerGSM">
+  <view class="bandBtnGSM">
+    <button id="gsm1800" bindtap="toggle1800" style="background-color:{{gsm1800color}}">DCS1800/B3</button>
+  </view>
+  <view class="bandBtnGSM">
+    <button id="gsm1900" bindtap="toggle1900" style="background-color:{{gsm1900color}}">PCS1900/B2</button>
+  </view>
+</view>
+<view>
+  <text>Input channel No.：</text><text>{{chanPrompt}}</text>
+  <input bindinput="inputChan" type="number" style="color:green" placeholder='{{arfcnRange}}'></input>
+
+  <button bindtap="calculateFreq">get frequency</button>
+  <view>
+    <text>UL frequency:</text>
+    <text style="color:green">{{textFreqUL}}</text>
+    <text>MHz</text>
+  </view>
+  <view>
+    <text>DL frequency:</text>
+    <text style="color:green">{{textFreqDL}}</text>
+    <text>MHz</text>
+  </view>
+</view>

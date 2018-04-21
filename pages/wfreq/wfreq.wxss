@@ -1,0 +1,28 @@
+/* wfreq.wxss */
+page{
+    background-color: #FFFFFF;
+}
+
+
+@import "../common/lib/weui.wxss";
+
+button{
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+.button-sp-area{
+  margin: 0 auto;
+  align-items: center;
+  width: 95%;
+}
+.mini-btn{
+  margin-top: 5rpx;
+  margin-bottom: 5rpx;
+  margin-right: 12rpx;
+}
+.wcdma-btn{
+  width:18%;
+  height:60rpx;
+  text-align: center;
+  border-radius:50rpx;
+}

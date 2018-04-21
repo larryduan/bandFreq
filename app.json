@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/gsmfreq/gsmfreq",
+    "pages/ltefreq/ltefreq",
+    "pages/tdsfreq/tdsfreq",
+    "pages/wfreq/wfreq",
+    "pages/cfreq/cfreq"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

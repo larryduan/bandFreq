@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<!--text style='font-size:20px'>Select Technology</text-->
+<view>
+  <button bindtap="gotoGSM">GSM</button>
+  <button bindtap="gotoLTE">LTE</button>
+  <button bindtap="gotoTDS">TD-SCDMA</button>
+  <button bindtap="gotoWCDMA">WCDMA</button>
+  <button bindtap="gotoCDMA">CDMA</button>
+</view>

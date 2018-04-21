@@ -1,0 +1,14 @@
+/* gsmfreq.wxss */
+.containerGSM{
+    height: 100%;
+    width:100%;
+    background-color:beige;
+    display:flex;
+}
+
+
+.bandBtnGSM{
+    height:100rpx;
+    width:50%;
+    background-color:cyan;
+}
