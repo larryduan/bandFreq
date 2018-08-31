@@ -79,42 +79,6 @@ Page({
 
       ]
     ],
-    /*
-    itemsFDD: [
-      { band: 1, value: 'B1', chanL: 18000, chanH: 18599, freqOffsetDL: 2110.0, freqOffsetUL: 1920.0 },
-      { band: 2, value: 'B2', chanL: 18600, chanH: 19199, freqOffsetDL: 1930.0, freqOffsetUL: 1850.0 },
-      { band: 3, value: 'B3', chanL: 19200, chanH: 19949, freqOffsetDL: 1805.0, freqOffsetUL: 1710.0 },
-      { band: 4, value: 'B4', chanL: 19950, chanH: 20399, freqOffsetDL: 2110.0, freqOffsetUL: 1710.0 },
-      { band: 5, value: 'B5', chanL: 20400, chanH: 20649, freqOffsetDL: 869.0, freqOffsetUL: 824.0 },
-      { band: 6, value: 'B6', chanL: 20650, chanH: 20749, freqOffsetDL: 875.0, freqOffsetUL: 830.0 },
-      { band: 7, value: 'B7', chanL: 20750, chanH: 21449, freqOffsetDL: 2620.0, freqOffsetUL: 2500.0 },
-      { band: 8, value: 'B8', chanL: 21450, chanH: 21799, freqOffsetDL: 925.0, freqOffsetUL: 880.0 },
-      { band: 9, value: 'B9', chanL: 21800, chanH: 22149, freqOffsetDL: 1844.9, freqOffsetUL: 1749.9 },
-      { band: 10, value: 'B10', chanL: 22150, chanH: 22749, freqOffsetDL: 2110.9, freqOffsetUL: 1710.9 },
-      { band: 11, value: 'B11', chanL: 22750, chanH: 22949, freqOffsetDL: 1475.9, freqOffsetUL: 1427.9 },
-
-      { band: 12, value: 'B12', chanL: 23010, chanH: 23179, freqOffsetDL: 729.0, freqOffsetUL: 699.0 },
-      { band: 13, value: 'B13', chanL: 23180, chanH: 23279, freqOffsetDL: 746.0, freqOffsetUL: 777.0 },
-      { band: 14, value: 'B14', chanL: 23280, chanH: 23379, freqOffsetDL: 758.0, freqOffsetUL: 788.0 },  // ????
-
-      { band: 17, value: 'B17', chanL: 23730, chanH: 23849, freqOffsetDL: 734.0, freqOffsetUL: 704.0 },
-      { band: 18, value: 'B18', chanL: 23850, chanH: 23999, freqOffsetDL: 860.0, freqOffsetUL: 815.0 },
-      { band: 19, value: 'B19', chanL: 24000, chanH: 24149, freqOffsetDL: 875.0, freqOffsetUL: 830.0 },
-      { band: 20, value: 'B20', chanL: 24150, chanH: 24449, freqOffsetDL: 791.0, freqOffsetUL: 832.0 },  // ????
-      { band: 21, value: 'B21', chanL: 24450, chanH: 24599, freqOffsetDL: 1495.9, freqOffsetUL: 1447.9 },
-      { band: 22, value: 'B22', chanL: 24600, chanH: 25399, freqOffsetDL: 3510.0, freqOffsetUL: 3410.0 },
-      { band: 23, value: 'B23', chanL: 25500, chanH: 25699, freqOffsetDL: 2180.0, freqOffsetUL: 2000.0 },
-      { band: 24, value: 'B24', chanL: 25700, chanH: 26039, freqOffsetDL: 1525.0, freqOffsetUL: 1626.5 },
-      { band: 25, value: 'B25', chanL: 26040, chanH: 26689, freqOffsetDL: 1930.0, freqOffsetUL: 1850.0 },
-      { band: 26, value: 'B26', chanL: 26690, chanH: 27039, freqOffsetDL: 859.0, freqOffsetUL: 814.0 },
-      { band: 27, value: 'B27', chanL: 27040, chanH: 27209, freqOffsetDL: 852.0, freqOffsetUL: 807.0 },
-      { band: 28, value: 'B28', chanL: 27210, chanH: 27659, freqOffsetDL: 758.0, freqOffsetUL: 703.0 },
-
-      { band: 29, value: 'B29', chanL: 9660, chanH: 9769, freqOffsetDL: 717.0, freqOffsetUL: 717.0 },
-
-      { band: 30, value: 'B30', chanL: 27660, chanH: 27759, freqOffsetDL: 2350.0, freqOffsetUL: 2305.0 },
-      { band: 31, value: 'B31', chanL: 27760, chanH: 27809, freqOffsetDL: 462.5, freqOffsetUL: 452.5 },
-    ],*/
     itemsTDD: [
       { band: 33, value: 'B33', chanL: 36000, chanH: 36199, freqOffsetDL: 1900.0, freqOffsetUL: 1900.0 },
       { band: 34, value: 'B34', chanL: 36200, chanH: 36349, freqOffsetDL: 2010.0, freqOffsetUL: 2010.0 },
