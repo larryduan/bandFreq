@@ -1,170 +1,105 @@
 // gsmfreq.js
-var arfcnBandRange = ["128 - 251", "975 – 1023, 0 - 124", "512 - 885", "512 - 810"]
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    index: 0,
     band: 850,
-    channel: 128,
-    chanPrompt: null,
-    arfcnRange: "",
+    chanDL: 128,
+    chanUL: 128,
+    textchanUL: "",
+    textchanDL: "",
+    chanPromptDL: null,
+    chanPromptUL: null,    
+    DL: null,
+    UL: null,
     freqDL: null,
     freqUL: null,
     textFreqDL: "",
     textFreqUL: "",
-    gsm850color: null,
-    gsm900color: null,
-    gsm1800color: null,
-    gsm1900color: null
+    chanSpacing: 0,
+
+    items: [
+      {
+        band: 5, name: 'GSM 850', type: 'default', spacing: 0.2,
+        DL: { chanRange: ["128-251"], chanBegins: [128], chanEnds: [251], freqBase: [869.2], },
+        UL: { chanRange: ["128-251"], chanBegins: [128], chanEnds: [251], freqBase: [824.2], },
+      }, {
+        band: 8, name: 'EGSM 900', type: 'default', spacing: 0.2,
+        DL: { chanRange: ["975-1023", "0-124"], chanBegins: [975, 0], chanEnds: [1023, 124], freqBase: [925.2, 935.0], },
+        UL: { chanRange: ["975-1023", "0-124"], chanBegins: [975, 0], chanEnds: [1023, 124], freqBase: [880.2, 890.0], },
+      }, {
+        band: 3, name: 'DCS 1800', type: 'default', spacing: 0.2,
+        DL: { chanRange: ["512-885"], chanBegins: [512], chanEnds: [885], freqBase: [1805.2], },
+        UL: { chanRange: ["512-885"], chanBegins: [512], chanEnds: [885], freqBase: [1710.2], },
+      }, {
+        band: 2, name: 'PCS 1900', type: 'default', spacing: 0.2,
+        DL: { chanRange: ["512-810"], chanBegins: [512], chanEnds: [810], freqBase: [1930.2], },
+        UL: { chanRange: ["512-810"], chanBegins: [512], chanEnds: [810], freqBase: [1850.2], },
+      },
+    ]
   },
-  //事件处理函数
-  toggle850: function () {
-    this.setData({
-      band: 850,
-      chanPrompt: arfcnBandRange[0],
-      arfcnRange: arfcnBandRange[0],
-      gsm850color: "green",
-      gsm900color: null,
-      gsm1800color: null,
-      gsm1900color: null
+  ErrMsg: function (msg) {
+    wx.showModal({
+      content: msg,
+      showCancel: false,
+      success: function (res) {
+      }
     })
   },
-  toggle900: function () {
+  selectBandInternal: function (index) {
+    var item = this.data.items[index]
     this.setData({
-      band: 900,
-      chanPrompt: arfcnBandRange[1],
-      arfcnRange: arfcnBandRange[1],
-      gsm850color: null,
-      gsm900color: "green",
-      gsm1800color: null,
-      gsm1900color: null
+      index: index,
+      band: item.band,
+      chanSpacing: item.spacing,
+      DL: item.DL,
+      UL: item.UL,
+      chanPromptDL: item.DL.chanRange,
+      chanPromptUL: item.UL.chanRange,
+      textchanUL: "",
+      textchanDL: "",
+      textFreqDL: "",
+      textFreqUL: "",
     })
   },
-  toggle1800: function () {
-    this.setData({
-      band: 1800,
-      chanPrompt: arfcnBandRange[2],
-      arfcnRange: arfcnBandRange[2],
-      gsm850color: null,
-      gsm900color: null,
-      gsm1800color: "green",
-      gsm1900color: null
-    })
-  },
-  toggle1900: function () {
-    this.setData({
-      band: 1900,
-      chanPrompt: arfcnBandRange[3],
-      arfcnRange: arfcnBandRange[3],
-      gsm850color: null,
-      gsm900color: null,
-      gsm1800color: null,
-      gsm1900color: "green"
-    })
+  selectBand: function (e) {
+    var index = e.currentTarget.dataset.index
+    this.selectBandInternal(index)
   },
   inputChan: function(e) {
     this.setData({
-      channel: e.detail.value
+      chanDL: e.detail.value,
+      chanUL: e.detail.value,
     })
   },
   calculateFreq: function() {
-    if (this.data.band === 850) {
-      if (this.data.channel >= 128 && this.data.channel <= 251) {
-        this.setData({
-          freqDL: (this.data.channel - 128) * 0.2 + 869.2,
-          freqUL: (this.data.channel - 128) * 0.2 + 824.2
-        })
-      } else {
-        wx.showModal({
-          content: '请输入正确的channel',
-          showCancel: false,
-          success: function (res) {
-            if (res.confirm) {
-              console.log('用户点击确定')
-            }
-          }
-        })
-        return
-      }
-    } else if (this.data.band === 900) {
-      if (this.data.channel >= 0 && this.data.channel <= 124) {
-        this.setData({
-          freqDL: (this.data.channel - 0) * 0.2 + 935,
-          freqUL: (this.data.channel - 0) * 0.2 + 890
-        })
-      } else if (this.data.channel >= 975 && this.data.channel <= 1024) {
-        this.setData({
-          freqDL: (this.data.channel - 975) * 0.2 + 925,
-          freqUL: (this.data.channel - 975) * 0.2 + 880
-        })
-      } else {
-        wx.showModal({
-          content: '请输入正确的channel',
-          showCancel: false,
-          success: function (res) {
-            if (res.confirm) {
-              console.log('用户点击确定')
-            }
-          }
-        })
+    var chanRangeNum = this.data.DL.chanBegins.length
+    var chan = this.data.chanDL
 
-        return
+    for (var i = 0; i < chanRangeNum; i++)
+    {
+      if (chan >= this.data.DL.chanBegins[i] && chan <= this.data.DL.chanEnds[i])
+      {
+        break;
       }
-    } else if (this.data.band === 1800) {
-      if (this.data.channel >= 512 && this.data.channel <= 885) {
-        this.setData({
-          freqDL: (this.data.channel - 512) * 0.2 + 1805.2,
-          freqUL: (this.data.channel - 512) * 0.2 + 1710.2
-        })
-      } else {
-        wx.showModal({
-          content: '请输入正确的channel',
-          showCancel: false,
-          success: function (res) {
-            if (res.confirm) {
-              console.log('用户点击确定')
-            }
-          }
-        })
+    }
 
-        return
-      }
-    } else if (this.data.band === 1900) {
-      if (this.data.channel >= 512 && this.data.channel <= 885) {
-        this.setData({
-          freqDL: (this.data.channel - 512) * 0.2 + 1930.2,
-          freqUL: (this.data.channel - 512) * 0.2 + 1850.2
-        })
-      } else {
-        wx.showModal({
-          content: '请输入正确的channel',
-          showCancel: false,
-          success: function (res) {
-            if (res.confirm) {
-              console.log('用户点击确定')
-            }
-          }
-        })
-
-        return
-      }
-    } else {
-      wx.showModal({
-        content: '请选择正确的band',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-          }
-        }
-      })
-
+    if (i >= chanRangeNum)
+    {
+      this.ErrMsg('Please input correct channel')
       return
     }
 
+    this.setData({
+      textchanUL: this.data.chanUL,
+      textchanDL: this.data.chanDL,
+      freqDL: (chan - this.data.DL.chanBegins[i]) * this.data.chanSpacing + this.data.DL.freqBase[i],
+      freqUL: (chan - this.data.UL.chanBegins[i]) * this.data.chanSpacing + this.data.UL.freqBase[i]
+    })
+    
     this.setData({
       textFreqDL: this.data.freqDL.toFixed(1),
       textFreqUL: this.data.freqUL.toFixed(1),
@@ -174,15 +109,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      band: 850,
-      chanPrompt: arfcnBandRange[0],
-      arfcnRange: arfcnBandRange[0],
-      gsm850color: "green",
-      gsm900color: null,
-      gsm1800color: null,
-      gsm1900color: null
-    })
+    this.selectBandInternal(0)
   },
 
   /**

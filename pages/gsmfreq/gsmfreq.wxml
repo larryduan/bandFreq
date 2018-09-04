@@ -1,34 +1,34 @@
 <!--gsmfreq.wxml-->
-<text>GSM Frequency Calculator</text>
-<view class="containerGSM">
-  <view class="bandBtnGSM">
-    <button id="gsm850" bindtap="toggle850" style="background-color:{{gsm850color}}">GSM850/B5</button>
+<view class="page">
+  <view class="page__hd show-bg">
+      <view class="page__title">GSM</view>
   </view>
-  <view class="bandBtnGSM">
-      <button id="gsm900" bindtap="toggle900" style="background-color:{{gsm900color}}">EGSM900/B8</button>
-  </view>
-</view>
-<view class="containerGSM">
-  <view class="bandBtnGSM">
-    <button id="gsm1800" bindtap="toggle1800" style="background-color:{{gsm1800color}}">DCS1800/B3</button>
-  </view>
-  <view class="bandBtnGSM">
-    <button id="gsm1900" bindtap="toggle1900" style="background-color:{{gsm1900color}}">PCS1900/B2</button>
+  <view class="page__bd page__bd_spacing show-bg">
+    <view class="weui-tab show-bg">
+      <view class="button-sp-area">
+        <button wx:for="{{items}}" wx:key="band" bindtap="selectBand" class="weui-btn mini-btn wcdma-btn" id="{{item.band}}" data-index="{{index}}" type="{{band == item.band ? 'primary':'default'}}" size="mini">{{item.name}}</button>
+      </view>
+    </view>
   </view>
 </view>
-<view>
-  <text>Input channel No.：</text><text>{{chanPrompt}}</text>
-  <input bindinput="inputChan" type="number" style="color:green" placeholder='{{arfcnRange}}'></input>
-
-  <button bindtap="calculateFreq">get frequency</button>
+<view class="show-bg">
   <view>
-    <text>UL frequency:</text>
+    <text>UL Channel \n Number:</text>
+    <text style="color:gray" decode="{{true}}">&nbsp;[{{chanPromptDL}}]</text>
+    <input bindinput="inputChan" type="number" style="color:green" placeholder='input here' value="{{textchanUL}}"></input>
+    <text decode="{{true}}">Frequency(MHz):&nbsp;&nbsp;</text>
     <text style="color:green">{{textFreqUL}}</text>
-    <text>MHz</text>
   </view>
+</view>
+<view class="show-bg">
   <view>
-    <text>DL frequency:</text>
+    <text>DL Channel \n Number:</text>
+    <text style="color:gray" decode="{{true}}">&nbsp;[{{chanPromptDL}}]</text>
+    <input bindinput="inputChan" type="number" style="color:green" placeholder='input here' value="{{textchanDL}}"></input>
+    <text decode="{{true}}">Frequency(MHz):&nbsp;&nbsp;</text>
     <text style="color:green">{{textFreqDL}}</text>
-    <text>MHz</text>
   </view>
+</view>
+<view class="button-sp-area">
+  <button class="weui-btn" type="primary" bindtap="calculateFreq">get frequency</button>
 </view>

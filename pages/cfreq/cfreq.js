@@ -7,48 +7,41 @@ Page({
   data: {
     index: 0,
     band: 0,
-    channel: 0,
-    chanL: 0,
-    chanH: 0,
-    value: 'BC0',
-    chanPrompt: '',
+    chanDL: 1,
+    chanUL: 1,
+    textchanUL: "",
+    textchanDL: "",
+    chanPromptDL: null,
+    chanPromptUL: null,
+    DL: null,
+    UL: null,
     freqDL: null,
     freqUL: null,
     textFreqDL: "",
     textFreqUL: "",
-
+    chanSpacing: 0,
+    
     items: [
-      //{ band: 0, value: 'BC0', chanL: 1, chanH: 1323, freqOffsetDL: 870.03, freqOffsetUL: 825.03 },
-      { band: 1, value: 'BC1', chanL: 0, chanH: 1199, freqOffsetDL: 1930.0, freqOffsetUL: 1850.0 },
-      //{ band: 2, value: 'BC2', chanL: 0, chanH: 2108, freqOffsetDL: 917.0125, freqOffsetUL: 872.0125 },
-      //{ band: 3, value: 'B3', chanL: 937, chanH: 1288, freqOffsetDL: 1807.4, freqOffsetUL: 1712.4 },
-      { band: 4, value: 'BC4', chanL: 0, chanH: 599, freqOffsetDL: 1840, freqOffsetUL: 1750 },
-      //{ band: 5, value: 'B5', chanL: 4132, chanH: 4233, freqOffsetDL: 871.4, freqOffsetUL: 826.4 },
-
-      { band: 6, value: 'BC6', chanL: 0, chanH: 1199, freqOffsetDL: 2110.0, freqOffsetUL: 1920.0 },
-      { band: 7, value: 'BC7', chanL: 0, chanH: 240, freqOffsetDL: 746.0, freqOffsetUL: 776.0 },
-      { band: 8, value: 'BC8', chanL: 0, chanH: 1499, freqOffsetDL: 1805.0, freqOffsetUL: 1710.0 },
-      { band: 9, value: 'BC9', chanL: 0, chanH: 699, freqOffsetDL: 925.0, freqOffsetUL: 880.0 },
-      { band: 10, value: 'BC10', chanL: 0, chanH: 919, freqOffsetDL: 851.0, freqOffsetUL: 806.0 },
-
-      //{ band: 11, value: 'B11', chanL: 3487, chanH: 3587, freqOffsetDL: 1478.4, freqOffsetUL: 1430.4 },
-      { band: 12, value: 'BC12', chanL: 0, chanH: 239, freqOffsetDL: 915.0125, freqOffsetUL: 870.0125 },
-      { band: 13, value: 'BC13', chanL: 0, chanH: 1399, freqOffsetDL: 2620.0, freqOffsetUL: 2500.0 },
-      { band: 14, value: 'BC14', chanL: 0, chanH: 1299, freqOffsetDL: 1930.0, freqOffsetUL: 1850.0 },
-      { band: 15, value: 'BC15', chanL: 0, chanH: 899, freqOffsetDL: 2110.0, freqOffsetUL: 1710.0 },
-      { band: 16, value: 'BC16', chanL: 140, chanH: 1459, freqOffsetDL: 2624.0, freqOffsetUL: 2502.0 },
-      { band: 17, value: 'BC17', chanL: 140, chanH: 1459, freqOffsetDL: 2624.0, freqOffsetUL: 2624.0 },
-
-      { band: 18, value: 'BC18', chanL: 0, chanH: 240, freqOffsetDL: 757.0, freqOffsetUL: 787.0 },
-      { band: 19, value: 'BC19', chanL: 0, chanH: 360, freqOffsetDL: 728.0, freqOffsetUL: 698.0 },
-
-      { band: 20, value: 'BC20', chanL: 0, chanH: 680, freqOffsetDL: 1525.0, freqOffsetUL: 1626.5 },
-      { band: 21, value: 'BC21A', chanL: 0, chanH: 200, freqOffsetDL: 2190.0, freqOffsetUL: 2000.0 },
-      { band: 22, value: 'BC21B', chanL: 201, chanH: 399, freqOffsetDL: 2180.05, freqOffsetUL: 2010.05 },
+      {
+        band: 0, name: 'BC0', type: 'default', spacing: 0.03,
+        DL: { chanRange: ["1-799", "991-323"], chanBegins: [1, 991], chanEnds: [799, 323], freqBase: [870.03, 869.04], },
+        UL: { chanRange: ["1-799", "991-323"], chanBegins: [1, 991], chanEnds: [799, 323], freqBase: [825.03, 824.04], },
+      }, {
+        band: 1, name: 'BC1', type: 'default', spacing: 0.05,
+        DL: { chanRange: ["0-1199"], chanBegins: [0], chanEnds: [1199], freqBase: [1930], },
+        UL: { chanRange: ["0-1199"], chanBegins: [0], chanEnds: [1199], freqBase: [1850], },
+      }, {
+        band: 2, name: 'BC2', type: 'default', spacing: 0.025,
+        DL: { chanRange: ["0-1000", "1329-2108"], chanBegins: [0, 1329], chanEnds: [1000, 2108], freqBase: [934.9875, 917.0125], },
+        UL: { chanRange: ["0-1000", "1329-2108"], chanBegins: [0, 1329], chanEnds: [1000, 2108], freqBase: [889.9875, 872.0125], },
+      }, {
+        band: 3, name: 'BC3', type: 'default', spacing: 0.0125,
+        DL: { chanRange: ["1-799", "801-1039", "1041-1199", "1201-1600"], chanBegins: [1, 801, 1041, 1201], chanEnds: [799, 1039, 1199, 1600], freqBase: [860.0125, 843.0125, 832.0125, 838.0125], },
+        UL: { chanRange: ["1-799", "801-1039", "1041-1199", "1201-1600"], chanBegins: [1, 801, 1041, 1201], chanEnds: [799, 1039, 1199, 1600], freqBase: [915.0125, 898.0125, 887.0125, 893.0125], },
+      },
     ]
   },
-  debug: function (msg) {
-    //console.log(msg);
+  ErrMsg: function (msg) {
     wx.showModal({
       content: msg,
       showCancel: false,
@@ -56,52 +49,58 @@ Page({
       }
     })
   },
-  inputChan: function (e) {
-    this.setData({
-      channel: e.detail.value
-    })
-  },
   selectBandInternal: function (index) {
     var item = this.data.items[index]
-
     this.setData({
       index: index,
       band: item.band,
-      chanL: item.chanL,
-      chanH: item.chanH,
-      freqOffsetDL: item.freqOffsetDL,
-      freqOffsetUL: item.freqOffsetUL,
-      chanPrompt: "" + item.chanL + "-" + item.chanH
+      chanSpacing: item.spacing,
+      DL: item.DL,
+      UL: item.UL,
+      chanPromptDL: item.DL.chanRange,
+      chanPromptUL: item.UL.chanRange,
+      textchanUL: "",
+      textchanDL: "",
+      textFreqDL: "",
+      textFreqUL: "",
     })
   },
   selectBand: function (e) {
     var index = e.currentTarget.dataset.index
-
     this.selectBandInternal(index)
   },
+  inputChan: function (e) {
+    this.setData({
+      chanDL: e.detail.value,
+      chanUL: e.detail.value,
+    })
+  },
   calculateFreq: function () {
-    if (this.data.channel < this.data.chanL || this.data.channel > this.data.chanH) {
-      wx.showModal({
-        content: '请输入正确的channel',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-          }
-        }
-      })
-      return
-    } else {
-      this.setData({
-        freqDL: (this.data.channel - this.data.chanL) * 0.05 + this.data.freqOffsetDL,
-        freqUL: (this.data.channel - this.data.chanL) * 0.05 + this.data.freqOffsetUL
-      })
+    var chanRangeNum = this.data.DL.chanBegins.length
+    var chan = this.data.chanDL
 
-      this.setData({
-        textFreqDL: this.data.freqDL.toFixed(4),
-        textFreqUL: this.data.freqUL.toFixed(4),
-      })
+    for (var i = 0; i < chanRangeNum; i++) {
+      if (chan >= this.data.DL.chanBegins[i] && chan <= this.data.DL.chanEnds[i]) {
+        break;
+      }
     }
+
+    if (i >= chanRangeNum) {
+      this.ErrMsg('Please input correct channel')
+      return
+    }
+
+    this.setData({
+      textchanUL: this.data.chanUL,
+      textchanDL: this.data.chanDL,
+      freqDL: (chan - this.data.DL.chanBegins[i]) * this.data.chanSpacing + this.data.DL.freqBase[i],
+      freqUL: (chan - this.data.UL.chanBegins[i]) * this.data.chanSpacing + this.data.UL.freqBase[i]
+    })
+
+    this.setData({
+      textFreqDL: this.data.freqDL.toFixed(4),
+      textFreqUL: this.data.freqUL.toFixed(4),
+    })
   },
   /**
    * 生命周期函数--监听页面加载

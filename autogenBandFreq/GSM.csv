@@ -1,0 +1,5 @@
+Band,Band(str),DL Channel Range,UL Channel Range,DL Frequency Base,UL Frequency Base,Channel Spacing,Type
+5,GSM 850,128-251,128-251,869.2,824.2,0.2,default
+8,EGSM 900,"975-1023,0-124","975-1023,0-124","925.2,935.0","880.2,890.0",0.2,default
+3,DCS 1800,512-885,512-885,1805.2,1710.2,0.2,default
+2,PCS 1900,512-810,512-810,1930.2,1850.2,0.2,default
