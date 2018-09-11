@@ -12,20 +12,22 @@
   </view>
 </view>
 <view class="show-bg">
+  <text decode="{{true}}">&nbsp;&nbsp;Channel Number:\n</text>
+  <text style="color:gray" decode="{{true}}">&nbsp;&nbsp;[{{chanPromptDL}}]</text>
+  <input bindinput="inputChan" type="number" style="color:green" placeholder='input here'></input>
+</view>
+<view class="show-bg" hidden="{{isDLOnly}}">
   <view>
-    <text>UL Channel \n Number:</text>
-    <text style="color:gray" decode="{{true}}">&nbsp;[{{chanPromptUL}}]</text>
-    <input bindinput="inputChan" type="number" style="color:green" placeholder='input here' value="{{textchanUL}}"></input>
-    <text decode="{{true}}">Frequency(MHz):&nbsp;&nbsp;</text>
+    <text decode="{{true}}">&nbsp;&nbsp;UL Frequency(MHz):&nbsp;&nbsp;</text>
     <text style="color:green">{{textFreqUL}}</text>
   </view>
 </view>
+<view class="show-bg" hidden="{{!isDLOnly}}">
+  <text style="color:green" decode="{{true}}">&nbsp;&nbsp;DL Only Band</text>
+</view>
 <view class="show-bg">
   <view>
-    <text>DL Channel \n Number:</text>
-    <text style="color:gray" decode="{{true}}">&nbsp;[{{chanPromptDL}}]</text>
-    <input bindinput="inputChan" type="number" style="color:green" placeholder='input here' value="{{textchanDL}}"></input>
-    <text decode="{{true}}">Frequency(MHz):&nbsp;&nbsp;</text>
+    <text decode="{{true}}">&nbsp;&nbsp;DL Frequency(MHz):&nbsp;&nbsp;</text>
     <text style="color:green">{{textFreqDL}}</text>
   </view>
 </view>
