@@ -16,41 +16,57 @@
       <view class="weui-tab__panel">
         <view class="button-sp-area">
           <view class="weui-tab__content" hidden="{{bandTabIndex != 0}}">
-            <!--button wx:for="{{itemsFDD}}" wx:key="band" bindtap="selectBand" class="weui-btn mini-btn lte-btn" id="{{item.band}}" data-index="{{index}}" type="{{band == item.band ? 'primary':'default'}}" size="mini">{{item.value}}</button-->
+            <!--button wx:for="{{itemsFDD}}" wx:key="band" bindtap="selectBand" class="weui-btn mini-btn lte-btn" id="{{item.band}}" data-index="{{index}}" type="{{band == item.band ? 'primary':'default'}}" size="mini">{{item.name}}</button-->
             <swiper indicator-dots="true" bindchange="fddSwiper">
               <block wx:for="{{itemsFDDswiper}}" wx:for-item="itemsFDD" wx:for-index="swiperindex">
                 <swiper-item data-swiperindex="{{swiperindex}}">
-                  <button wx:for="{{itemsFDD}}" wx:key="band" bindtap="selectBand" class="weui-btn mini-btn lte-btn" id="{{item.band}}" data-index="{{index}}" type="{{band == item.band ? 'primary':'default'}}" size="mini">{{item.value}}</button>
+                  <button wx:for="{{itemsFDD}}" wx:key="band" bindtap="selectBand" class="weui-btn mini-btn lte-btn" id="{{item.band}}" data-index="{{index}}" type="{{band == item.band ? 'primary':'default'}}" size="mini">{{item.name}}</button>
                 </swiper-item>
               </block>
             </swiper>
           </view>
           <view class="weui-tab__content" hidden="{{bandTabIndex != 1}}">
-            <button wx:for="{{itemsTDD}}" wx:key="band" bindtap="selectBand" class="weui-btn mini-btn lte-btn" id="{{item.band}}" data-index="{{index}}" type="{{band == item.band ? 'primary':'default'}}" size="mini">{{item.value}}</button>
+            <button wx:for="{{itemsTDD}}" wx:key="band" bindtap="selectBand" class="weui-btn mini-btn lte-btn" id="{{item.band}}" data-index="{{index}}" type="{{band == item.band ? 'primary':'default'}}" size="mini">{{item.name}}</button>
           </view>
         </view>
       </view>
     </view>
-    <view class="show-bg">
-      <text>Input channel No.：</text>
-      <text style="color:gray">[{{chanPrompt}}]</text>
-      <input bindinput="inputChan" type="number" style="color:green" placeholder='input here'></input>
-    </view>
   </view>
+</view>
+<view class="show-bg">
   <view>
-    <view>
-      <text>UL frequency:</text>
-      <text style="color:green" placeholder=''>{{textFreqUL}}</text>
-      <text>MHz</text>
-    </view>
-    <view>
-      <text>DL frequency:</text>
-      <text style="color:green" placeholder=''>{{textFreqDL}}</text>
-      <text>MHz</text>
-    </view>
-    <view class="button-sp-area">
-      <button class="weui-btn" type="primary" bindtap="calculateFreq">get frequency</button>
-    </view>
+    <text>Allowed BWs(MHz):</text>
+    <text style="color:green" decode="{{true}}">&nbsp;{{bandwidths}}</text>
   </view>
-
+</view>
+<view class="show-bg" hidden="{{bandTabIndex != 0}}">
+  <view class="show-bg" hidden="{{isDLOnly}}">
+    <text>Valid UL Channels:</text>
+    <text style="color:gray" decode="{{true}}">&nbsp;[{{chanPromptUL}}]</text>
+    <input bindinput="inputChanUL" type="number" style="color:green" placeholder='input here' value="{{textchanUL}}"></input>
+    <text decode="{{true}}">Frequency(MHz):&nbsp;&nbsp;</text>
+    <text style="color:green">{{textFreqUL}}</text>
+  </view>
+  <view class="show-bg" hidden="{{!isDLOnly}}">
+    <text style="color:green" decode="{{true}}">&nbsp;&nbsp;DL Only Band</text>
+  </view>
+  <view class="show-bg">
+    <text>Valid DL Channels:</text>
+    <text style="color:gray" decode="{{true}}">&nbsp;[{{chanPromptDL}}]</text>
+    <input bindinput="inputChanDL" type="number" style="color:green" placeholder='input here' value="{{textchanDL}}"></input>
+    <text decode="{{true}}">Frequency(MHz):&nbsp;&nbsp;</text>
+    <text style="color:green">{{textFreqDL}}</text>
+  </view>
+</view>
+<view class="show-bg" hidden="{{bandTabIndex != 1}}">
+  <view>
+    <text>Valid Channels:</text>
+    <text style="color:gray" decode="{{true}}">&nbsp;[{{chanPromptDL}}]</text>
+    <input bindinput="inputChanDL" type="number" style="color:green" placeholder='input here' value="{{textchanDL}}"></input>
+    <text decode="{{true}}">Frequency(MHz):&nbsp;&nbsp;</text>
+    <text style="color:green">{{textFreqDL}}</text>
+  </view>
+</view>
+<view class="button-sp-area">
+  <button class="weui-btn" type="primary" bindtap="calculateFreq">get frequency</button>
 </view>

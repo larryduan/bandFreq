@@ -14,7 +14,7 @@
 <view class="show-bg">
   <view>
     <text>UL Channel \n Number:</text>
-    <text style="color:gray" decode="{{true}}">&nbsp;[{{chanPromptDL}}]</text>
+    <text style="color:gray" decode="{{true}}">&nbsp;[{{chanPromptUL}}]</text>
     <input bindinput="inputChan" type="number" style="color:green" placeholder='input here' value="{{textchanUL}}"></input>
     <text decode="{{true}}">Frequency(MHz):&nbsp;&nbsp;</text>
     <text style="color:green">{{textFreqUL}}</text>

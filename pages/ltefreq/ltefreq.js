@@ -9,99 +9,281 @@ Page({
     sliderOffset: 0,
     sliderLeft: 0,
 
+    isDLOnly: false,
+
     index: 0,
     band: 1,
-    channel: 0,
-    chanL: 0,
-    chanH: 0,
+    chanDL: 0,
+    chanUL: 0,
     value: 'B1',
     chanPrompt: '',
     freqDL: null,
     freqUL: null,
     textFreqDL: "",
     textFreqUL: "",
+    bandwidths: null,
 
     swiperpage: 0,
     itemsFDDswiper: [
       [
-        { band: 1, value: 'B1', chanL: 18000, chanH: 18599, freqOffsetDL: 2110.0, freqOffsetUL: 1920.0 },
-        { band: 2, value: 'B2', chanL: 18600, chanH: 19199, freqOffsetDL: 1930.0, freqOffsetUL: 1850.0 },
-        { band: 3, value: 'B3', chanL: 19200, chanH: 19949, freqOffsetDL: 1805.0, freqOffsetUL: 1710.0 },
-        { band: 4, value: 'B4', chanL: 19950, chanH: 20399, freqOffsetDL: 2110.0, freqOffsetUL: 1710.0 },
-        { band: 5, value: 'B5', chanL: 20400, chanH: 20649, freqOffsetDL: 869.0, freqOffsetUL: 824.0 },
-        { band: 6, value: 'B6', chanL: 20650, chanH: 20749, freqOffsetDL: 875.0, freqOffsetUL: 830.0 },
-        { band: 7, value: 'B7', chanL: 20750, chanH: 21449, freqOffsetDL: 2620.0, freqOffsetUL: 2500.0 },
-        { band: 8, value: 'B8', chanL: 21450, chanH: 21799, freqOffsetDL: 925.0, freqOffsetUL: 880.0 },
-        { band: 9, value: 'B9', chanL: 21800, chanH: 22149, freqOffsetDL: 1844.9, freqOffsetUL: 1749.9 },
-        { band: 10, value: 'B10', chanL: 22150, chanH: 22749, freqOffsetDL: 2110.9, freqOffsetUL: 1710.9 },
-        { band: 11, value: 'B11', chanL: 22750, chanH: 22949, freqOffsetDL: 1475.9, freqOffsetUL: 1427.9 },
-
-        { band: 12, value: 'B12', chanL: 23010, chanH: 23179, freqOffsetDL: 729.0, freqOffsetUL: 699.0 },
-        { band: 13, value: 'B13', chanL: 23180, chanH: 23279, freqOffsetDL: 746.0, freqOffsetUL: 777.0 },
-        { band: 14, value: 'B14', chanL: 23280, chanH: 23379, freqOffsetDL: 758.0, freqOffsetUL: 788.0 },  // ????
-
-        { band: 17, value: 'B17', chanL: 23730, chanH: 23849, freqOffsetDL: 734.0, freqOffsetUL: 704.0 },
-
-        { band: 18, value: 'B18', chanL: 23850, chanH: 23999, freqOffsetDL: 860.0, freqOffsetUL: 815.0 },
-        { band: 19, value: 'B19', chanL: 24000, chanH: 24149, freqOffsetDL: 875.0, freqOffsetUL: 830.0 },
-        { band: 20, value: 'B20', chanL: 24150, chanH: 24449, freqOffsetDL: 791.0, freqOffsetUL: 832.0 },  // ????
-        { band: 21, value: 'B21', chanL: 24450, chanH: 24599, freqOffsetDL: 1495.9, freqOffsetUL: 1447.9 },
-        { band: 22, value: 'B22', chanL: 24600, chanH: 25399, freqOffsetDL: 3510.0, freqOffsetUL: 3410.0 },
+        {
+          band: 1, name: 'B1', type: 'default', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+          DL: { chanRange: ["0-599"], chanBegins: [0], chanEnds: [599], freqBase: [2100], },
+          UL: { chanRange: ["18000-18599"], chanBegins: [18000], chanEnds: [18599], freqBase: [1920], },
+        }, {
+          band: 2, name: 'B2', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10, 15, 20],
+          DL: { chanRange: ["600-1199"], chanBegins: [600], chanEnds: [1199], freqBase: [1930], },
+          UL: { chanRange: ["18600-19199"], chanBegins: [18600], chanEnds: [19199], freqBase: [1850], },
+        }, {
+          band: 3, name: 'B3', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10, 15, 20],
+          DL: { chanRange: ["1200-1949"], chanBegins: [1200], chanEnds: [1949], freqBase: [1805], },
+          UL: { chanRange: ["19200-19949"], chanBegins: [19200], chanEnds: [19949], freqBase: [1710], },
+        }, {
+          band: 4, name: 'B4', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10, 15, 20],
+          DL: { chanRange: ["1950-2399"], chanBegins: [1950], chanEnds: [2399], freqBase: [2110], },
+          UL: { chanRange: ["19950-20399"], chanBegins: [19950], chanEnds: [20399], freqBase: [1710], },
+        }, {
+          band: 5, name: 'B5', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10],
+          DL: { chanRange: ["2400-2649"], chanBegins: [2400], chanEnds: [2649], freqBase: [869], },
+          UL: { chanRange: ["20400-20649"], chanBegins: [20400], chanEnds: [20649], freqBase: [824], },
+        }, {
+          band: 6, name: 'B6', type: 'default', spacing: 0.1, bandwidths: [5, 10],
+          DL: { chanRange: ["2650-2749"], chanBegins: [2650], chanEnds: [2749], freqBase: [875], },
+          UL: { chanRange: ["20650-20749"], chanBegins: [20650], chanEnds: [20749], freqBase: [830], },
+        }, {
+          band: 7, name: 'B7', type: 'default', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+          DL: { chanRange: ["2750-3449"], chanBegins: [2750], chanEnds: [3449], freqBase: [2620], },
+          UL: { chanRange: ["20750-21449"], chanBegins: [20750], chanEnds: [21449], freqBase: [2500], },
+        }, {
+          band: 8, name: 'B8', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10],
+          DL: { chanRange: ["3450-3799"], chanBegins: [3450], chanEnds: [3799], freqBase: [925], },
+          UL: { chanRange: ["21450-21799"], chanBegins: [21450], chanEnds: [21799], freqBase: [880], },
+        }, {
+          band: 9, name: 'B9', type: 'default', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+          DL: { chanRange: ["3800-4149"], chanBegins: [3800], chanEnds: [4149], freqBase: [1844.9], },
+          UL: { chanRange: ["21800-22149"], chanBegins: [21800], chanEnds: [22149], freqBase: [1749.9], },
+        }, {
+          band: 10, name: 'B10', type: 'default', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+          DL: { chanRange: ["4150-4749"], chanBegins: [4150], chanEnds: [4749], freqBase: [2110], },
+          UL: { chanRange: ["22150-22749"], chanBegins: [22150], chanEnds: [22749], freqBase: [1710], },
+        }, {
+          band: 11, name: 'B11', type: 'default', spacing: 0.1, bandwidths: [5, 10],
+          DL: { chanRange: ["4750-4949"], chanBegins: [4750], chanEnds: [4949], freqBase: [1475.9], },
+          UL: { chanRange: ["22750-22949"], chanBegins: [22750], chanEnds: [22949], freqBase: [1427.9], },
+        }, {
+          band: 12, name: 'B12', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10],
+          DL: { chanRange: ["5010-5179"], chanBegins: [5010], chanEnds: [5179], freqBase: [729], },
+          UL: { chanRange: ["23010-23179"], chanBegins: [23010], chanEnds: [23179], freqBase: [699], },
+        }, {
+          band: 13, name: 'B13', type: 'default', spacing: 0.1, bandwidths: [5, 10],
+          DL: { chanRange: ["5180-5279"], chanBegins: [5180], chanEnds: [5279], freqBase: [746], },
+          UL: { chanRange: ["23180-23279"], chanBegins: [23180], chanEnds: [23279], freqBase: [777], },
+        }, {
+          band: 14, name: 'B14', type: 'default', spacing: 0.1, bandwidths: [5, 10],
+          DL: { chanRange: ["5280-5379"], chanBegins: [5280], chanEnds: [5379], freqBase: [758], },
+          UL: { chanRange: ["23280-23379"], chanBegins: [23280], chanEnds: [23379], freqBase: [788], },
+        }, {
+          band: 17, name: 'B17', type: 'default', spacing: 0.1, bandwidths: [5, 10],
+          DL: { chanRange: ["5730-5849"], chanBegins: [5730], chanEnds: [5849], freqBase: [734], },
+          UL: { chanRange: ["23730-23849"], chanBegins: [23730], chanEnds: [23849], freqBase: [704], },
+        }, {
+          band: 18, name: 'B18', type: 'default', spacing: 0.1, bandwidths: [5, 10, 15],
+          DL: { chanRange: ["5850-5999"], chanBegins: [5850], chanEnds: [5999], freqBase: [860], },
+          UL: { chanRange: ["23859-23999"], chanBegins: [23859], chanEnds: [23999], freqBase: [815], },
+        }, {
+          band: 19, name: 'B19', type: 'default', spacing: 0.1, bandwidths: [5, 10, 15],
+          DL: { chanRange: ["6000-6149"], chanBegins: [6000], chanEnds: [6149], freqBase: [875], },
+          UL: { chanRange: ["24000-24149"], chanBegins: [24000], chanEnds: [24149], freqBase: [830], },
+        }, {
+          band: 20, name: 'B20', type: 'default', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+          DL: { chanRange: ["6150-6449"], chanBegins: [6150], chanEnds: [6449], freqBase: [791], },
+          UL: { chanRange: ["24150-24449"], chanBegins: [24150], chanEnds: [24449], freqBase: [832], },
+        }, {
+          band: 21, name: 'B21', type: 'default', spacing: 0.1, bandwidths: [5, 10, 15],
+          DL: { chanRange: ["6450-6599"], chanBegins: [6450], chanEnds: [6599], freqBase: [1495.9], },
+          UL: { chanRange: ["24450-24599"], chanBegins: [24450], chanEnds: [24599], freqBase: [1447.9], },
+        }, {
+          band: 22, name: 'B22', type: 'default', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+          DL: { chanRange: ["6600-7399"], chanBegins: [6600], chanEnds: [7399], freqBase: [3510], },
+          UL: { chanRange: ["24600-25399"], chanBegins: [24600], chanEnds: [25399], freqBase: [3410], },
+        },
       ],
       [
-        { band: 23, value: 'B23', chanL: 25500, chanH: 25699, freqOffsetDL: 2180.0, freqOffsetUL: 2000.0 },
-        { band: 24, value: 'B24', chanL: 25700, chanH: 26039, freqOffsetDL: 1525.0, freqOffsetUL: 1626.5 },
-        { band: 25, value: 'B25', chanL: 26040, chanH: 26689, freqOffsetDL: 1930.0, freqOffsetUL: 1850.0 },
-        { band: 26, value: 'B26', chanL: 26690, chanH: 27039, freqOffsetDL: 859.0, freqOffsetUL: 814.0 },
-        { band: 27, value: 'B27', chanL: 27040, chanH: 27209, freqOffsetDL: 852.0, freqOffsetUL: 807.0 },
-        { band: 28, value: 'B28', chanL: 27210, chanH: 27659, freqOffsetDL: 758.0, freqOffsetUL: 703.0 },
-
-        { band: 29, value: 'B29', chanL: 9660, chanH: 9769, freqOffsetDL: 717.0, freqOffsetUL: 717.0 },   // DL only
-        { band: 30, value: 'B30', chanL: 27660, chanH: 27759, freqOffsetDL: 2350.0, freqOffsetUL: 2305.0 },
-        { band: 31, value: 'B31', chanL: 27760, chanH: 27809, freqOffsetDL: 462.5, freqOffsetUL: 452.5 },
-        { band: 32, value: 'B32', chanL: 9920, chanH: 10359, freqOffsetDL: 1452.0, freqOffsetUL: 1452.0 },   // DL only
-        { band: 65, value: 'B65', chanL: 65536, chanH: 66435, freqOffsetDL: 2110.0, freqOffsetUL: 1920.0 },
-        { band: 66, value: 'B66', chanL: 66436, chanH: 67335, freqOffsetDL: 2110.0, freqOffsetUL: 1710.0 },
-
-        { band: 67, value: 'B67', chanL: 67336, chanH: 67535, freqOffsetDL: 738.0, freqOffsetUL: 738.0 },   // DL only
-        { band: 68, value: 'B68', chanL: 67536, chanH: 67835, freqOffsetDL: 753.0, freqOffsetUL: 698.0 },
-        { band: 69, value: 'B69', chanL: 67836, chanH: 68335, freqOffsetDL: 2570.0, freqOffsetUL: 2570.0 }, // DL only
-        { band: 70, value: 'B70', chanL: 68336, chanH: 68585, freqOffsetDL: 1995.0, freqOffsetUL: 1695.0 },
-        { band: 71, value: 'B71', chanL: 68586, chanH: 68935, freqOffsetDL: 617.0, freqOffsetUL: 663.0 },
-        { band: 72, value: 'B72', chanL: 68936, chanH: 68985, freqOffsetDL: 461.0, freqOffsetUL: 451.0 },
-        { band: 74, value: 'B74', chanL: 69036, chanH: 69465, freqOffsetDL: 1475.0, freqOffsetUL: 1427.0 },
-        { band: 75, value: 'B75', chanL: 69466, chanH: 70315, freqOffsetDL: 1432.0, freqOffsetUL: 1432.0 }, // DL only
+        {
+          band: 23, name: 'B23', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10, 15, 20],
+          DL: { chanRange: ["7500-7688"], chanBegins: [7500], chanEnds: [7688], freqBase: [2180], },
+          UL: { chanRange: ["25500-25699"], chanBegins: [25500], chanEnds: [25699], freqBase: [2000], },
+        }, {
+          band: 24, name: 'B24', type: 'default', spacing: 0.1, bandwidths: [5, 10],
+          DL: { chanRange: ["7700-8039"], chanBegins: [7700], chanEnds: [8039], freqBase: [1525], },
+          UL: { chanRange: ["25700-26039"], chanBegins: [25700], chanEnds: [26039], freqBase: [1626.5], },
+        }, {
+          band: 25, name: 'B25', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10, 15, 20],
+          DL: { chanRange: ["8040-8689"], chanBegins: [8040], chanEnds: [8689], freqBase: [1930], },
+          UL: { chanRange: ["26040-26689"], chanBegins: [26040], chanEnds: [26689], freqBase: [1850], },
+        }, {
+          band: 26, name: 'B26', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10, 15],
+          DL: { chanRange: ["8690-9039"], chanBegins: [8690], chanEnds: [9039], freqBase: [859], },
+          UL: { chanRange: ["26690-27039"], chanBegins: [26690], chanEnds: [27039], freqBase: [814], },
+        }, {
+          band: 27, name: 'B27', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10],
+          DL: { chanRange: ["9040-9209"], chanBegins: [9040], chanEnds: [9209], freqBase: [852], },
+          UL: { chanRange: ["27040-27209"], chanBegins: [27040], chanEnds: [27209], freqBase: [807], },
+        }, {
+          band: 28, name: 'B28', type: 'default', spacing: 0.1, bandwidths: [3, 5, 10, 15, 20],
+          DL: { chanRange: ["9210-9659"], chanBegins: [9210], chanEnds: [9659], freqBase: [758], },
+          UL: { chanRange: ["27210-27659"], chanBegins: [27210], chanEnds: [27659], freqBase: [703], },
+        }, {
+          band: 29, name: 'B29', type: 'DL', spacing: 0.1, bandwidths: [3, 5, 10],
+          DL: { chanRange: ["9660-9769"], chanBegins: [9660], chanEnds: [9769], freqBase: [717], },
+          UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+        }, {
+          band: 30, name: 'B30', type: 'default', spacing: 0.1, bandwidths: [5, 10],
+          DL: { chanRange: ["9770-9869"], chanBegins: [9770], chanEnds: [9869], freqBase: [2350], },
+          UL: { chanRange: ["27660-27759"], chanBegins: [27660], chanEnds: [27759], freqBase: [2305], },
+        }, {
+          band: 31, name: 'B31', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5],
+          DL: { chanRange: ["9870-9919"], chanBegins: [9870], chanEnds: [9919], freqBase: [462.5], },
+          UL: { chanRange: ["27760-27809"], chanBegins: [27760], chanEnds: [27809], freqBase: [452.5], },
+        }, {
+          band: 32, name: 'B32', type: 'DL', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+          DL: { chanRange: ["9920-10359"], chanBegins: [9920], chanEnds: [10359], freqBase: [1452], },
+          UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+        }, {
+          band: 65, name: 'B65', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10, 15, 20],
+          DL: { chanRange: ["65536-66435"], chanBegins: [65536], chanEnds: [66435], freqBase: [2110], },
+          UL: { chanRange: ["131072-131971"], chanBegins: [131072], chanEnds: [131971], freqBase: [1920], },
+        }, {
+          band: 66, name: 'B66', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10, 15, 20],
+          DL: { chanRange: ["66436-67335"], chanBegins: [66436], chanEnds: [67335], freqBase: [2110], },
+          UL: { chanRange: ["131972-132671"], chanBegins: [131972], chanEnds: [132671], freqBase: [1710], },
+        }, {
+          band: 67, name: 'B67', type: 'DL', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+          DL: { chanRange: ["67336-67535"], chanBegins: [67336], chanEnds: [67535], freqBase: [738], },
+          UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+        }, {
+          band: 68, name: 'B68', type: 'default', spacing: 0.1, bandwidths: [5, 10, 15],
+          DL: { chanRange: ["67536-67835"], chanBegins: [67536], chanEnds: [67835], freqBase: [753], },
+          UL: { chanRange: ["132672-132971"], chanBegins: [132672], chanEnds: [132971], freqBase: [698], },
+        }, {
+          band: 69, name: 'B69', type: 'DL', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+          DL: { chanRange: ["67836-68335"], chanBegins: [67836], chanEnds: [68335], freqBase: [2570], },
+          UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+        }, {
+          band: 70, name: 'B70', type: 'default', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+          DL: { chanRange: ["68336-68585"], chanBegins: [68336], chanEnds: [68585], freqBase: [1995], },
+          UL: { chanRange: ["132972-133121"], chanBegins: [132972], chanEnds: [133121], freqBase: [1695], },
+        }, {
+          band: 71, name: 'B71', type: 'default', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+          DL: { chanRange: ["68586-68935"], chanBegins: [68586], chanEnds: [68935], freqBase: [617], },
+          UL: { chanRange: ["133122-133471"], chanBegins: [133122], chanEnds: [133471], freqBase: [663], },
+        }, {
+          band: 72, name: 'B72', type: 'default', spacing: 0.1, bandwidths: [5],
+          DL: { chanRange: ["68963-68985"], chanBegins: [68963], chanEnds: [68985], freqBase: [461], },
+          UL: { chanRange: ["133472-133521"], chanBegins: [133472], chanEnds: [133521], freqBase: [451], },
+        }, {
+          band: 74, name: 'B74', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10, 15, 20],
+          DL: { chanRange: ["69036-69465"], chanBegins: [69036], chanEnds: [69465], freqBase: [1475], },
+          UL: { chanRange: ["133572-134001"], chanBegins: [133572], chanEnds: [134001], freqBase: [1427], },
+        }, {
+          band: 75, name: 'B75', type: 'DL', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+          DL: { chanRange: ["69466-70315"], chanBegins: [69466], chanEnds: [70315], freqBase: [1432], },
+          UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+        },
       ],
       [
-        { band: 76, value: 'B76', chanL: 70316, chanH: 70365, freqOffsetDL: 1427.0, freqOffsetUL: 1427.0 }, // DL only
-        { band: 252, value: 'B252', chanL: 255144, chanH: 256143, freqOffsetDL: 5150.0, freqOffsetUL: 5150.0 }, // DL only
-        { band: 255, value: 'B255', chanL: 260894, chanH: 262143, freqOffsetDL: 5725.0, freqOffsetUL: 5725.0 }, // DL only
-
+        {
+          band: 76, name: 'B76', type: 'DL', spacing: 0.1, bandwidths: [5],
+          DL: { chanRange: ["70316-70365"], chanBegins: [70316], chanEnds: [70365], freqBase: [1427], },
+          UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+        }, {
+          band: 252, name: 'B252', type: 'DL', spacing: 0.1, bandwidths: [20],
+          DL: { chanRange: ["255144-256143"], chanBegins: [255144], chanEnds: [256143], freqBase: [5150], },
+          UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+        }, {
+          band: 255, name: 'B255', type: 'DL', spacing: 0.1, bandwidths: [20],
+          DL: { chanRange: ["261519-262143"], chanBegins: [261519], chanEnds: [262143], freqBase: [5725], },
+          UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+        },
       ]
     ],
     itemsTDD: [
-      { band: 33, value: 'B33', chanL: 36000, chanH: 36199, freqOffsetDL: 1900.0, freqOffsetUL: 1900.0 },
-      { band: 34, value: 'B34', chanL: 36200, chanH: 36349, freqOffsetDL: 2010.0, freqOffsetUL: 2010.0 },
-      { band: 35, value: 'B35', chanL: 36350, chanH: 36949, freqOffsetDL: 1850.0, freqOffsetUL: 1850.0 },
-      { band: 36, value: 'B36', chanL: 36950, chanH: 37549, freqOffsetDL: 1930.0, freqOffsetUL: 1930.0 },
-      { band: 37, value: 'B37', chanL: 37550, chanH: 37749, freqOffsetDL: 1910.0, freqOffsetUL: 1910.0 },
-      { band: 38, value: 'B38', chanL: 37750, chanH: 38249, freqOffsetDL: 2570.0, freqOffsetUL: 2570.0 },
-      { band: 39, value: 'B39', chanL: 38250, chanH: 38649, freqOffsetDL: 1880.0, freqOffsetUL: 1880.0 },
-      { band: 40, value: 'B40', chanL: 38650, chanH: 39649, freqOffsetDL: 2300.0, freqOffsetUL: 2300.0 },
-      { band: 41, value: 'B41', chanL: 39650, chanH: 41589, freqOffsetDL: 2496.0, freqOffsetUL: 2496.0 },
-      { band: 42, value: 'B42', chanL: 41590, chanH: 43589, freqOffsetDL: 3400.0, freqOffsetUL: 3400.0 },
-      { band: 43, value: 'B43', chanL: 43590, chanH: 45589, freqOffsetDL: 3600.0, freqOffsetUL: 3600.0 },
-      { band: 44, value: 'B44', chanL: 45590, chanH: 46589, freqOffsetDL: 703.0, freqOffsetUL: 703.0 },
-      { band: 45, value: 'B45', chanL: 46590, chanH: 46789, freqOffsetDL: 1447.0, freqOffsetUL: 1447.0 },
-      { band: 46, value: 'B46', chanL: 46790, chanH: 54539, freqOffsetDL: 5150.0, freqOffsetUL: 5150.0 },
-      { band: 47, value: 'B47', chanL: 54540, chanH: 55239, freqOffsetDL: 5855.0, freqOffsetUL: 5855.0 },
-      { band: 48, value: 'B48', chanL: 55240, chanH: 56739, freqOffsetDL: 3550.0, freqOffsetUL: 3550.0 },
-      { band: 50, value: 'B50', chanL: 58240, chanH: 59089, freqOffsetDL: 1432.0, freqOffsetUL: 1432.0 },
-      { band: 51, value: 'B51', chanL: 59090, chanH: 59139, freqOffsetDL: 1427.0, freqOffsetUL: 1427.0 },
+      {
+        band: 33, name: 'B33', type: 'tdd', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+        DL: { chanRange: ["36000-36199"], chanBegins: [36000], chanEnds: [36199], freqBase: [1900], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 34, name: 'B34', type: 'tdd', spacing: 0.1, bandwidths: [5, 10, 15],
+        DL: { chanRange: ["36200-36349"], chanBegins: [36200], chanEnds: [36349], freqBase: [2010], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 35, name: 'B35', type: 'tdd', spacing: 0.1, bandwidths: [1.4, 3, 5, 10, 15, 20],
+        DL: { chanRange: ["36350-36949"], chanBegins: [36350], chanEnds: [36949], freqBase: [1850], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 36, name: 'B36', type: 'tdd', spacing: 0.1, bandwidths: [1.4, 3, 5, 10, 15, 20],
+        DL: { chanRange: ["36950-37549"], chanBegins: [36950], chanEnds: [37549], freqBase: [1930], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 37, name: 'B37', type: 'tdd', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+        DL: { chanRange: ["37550-37749"], chanBegins: [37550], chanEnds: [37749], freqBase: [1910], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 38, name: 'B38', type: 'tdd', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+        DL: { chanRange: ["37750-38249"], chanBegins: [37750], chanEnds: [38249], freqBase: [2570], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 39, name: 'B39', type: 'tdd', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+        DL: { chanRange: ["38250-38649"], chanBegins: [38250], chanEnds: [38649], freqBase: [1880], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 40, name: 'B40', type: 'tdd', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+        DL: { chanRange: ["38650-38949"], chanBegins: [38650], chanEnds: [38949], freqBase: [2300], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 41, name: 'B41', type: 'tdd', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+        DL: { chanRange: ["39650-41589"], chanBegins: [39650], chanEnds: [41589], freqBase: [2496], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 42, name: 'B42', type: 'tdd', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+        DL: { chanRange: ["41590-43589"], chanBegins: [41590], chanEnds: [43589], freqBase: [3400], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 43, name: 'B43', type: 'tdd', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+        DL: { chanRange: ["43590-45589"], chanBegins: [43590], chanEnds: [45589], freqBase: [3600], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 44, name: 'B44', type: 'tdd', spacing: 0.1, bandwidths: [3, 5, 10, 15, 20],
+        DL: { chanRange: ["45590-46589"], chanBegins: [45590], chanEnds: [46589], freqBase: [703], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 45, name: 'B45', type: 'tdd', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+        DL: { chanRange: ["46590-46789"], chanBegins: [46590], chanEnds: [46789], freqBase: [1447], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 46, name: 'B46', type: 'tdd', spacing: 0.1, bandwidths: [10, 20],
+        DL: { chanRange: ["46790-54539"], chanBegins: [46790], chanEnds: [54539], freqBase: [5150], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 47, name: 'B47', type: 'tdd', spacing: 0.1, bandwidths: [10, 20],
+        DL: { chanRange: ["54540-55239"], chanBegins: [54540], chanEnds: [55239], freqBase: [5855], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 48, name: 'B48', type: 'tdd', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+        DL: { chanRange: ["55240-56739"], chanBegins: [55240], chanEnds: [56739], freqBase: [3550], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 50, name: 'B50', type: 'tdd', spacing: 0.1, bandwidths: [3, 5, 10, 15, 20],
+        DL: { chanRange: ["58240-59089"], chanBegins: [58240], chanEnds: [59089], freqBase: [1432], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 51, name: 'B51', type: 'tdd', spacing: 0.1, bandwidths: [5],
+        DL: { chanRange: ["59090-59139"], chanBegins: [59090], chanEnds: [59139], freqBase: [1427], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      },
     ]
   },
-  debug: function (msg) {
-    //console.log(msg);
+  ErrMsg: function (msg) {
     wx.showModal({
       content: msg,
       showCancel: false,
@@ -109,9 +291,16 @@ Page({
       }
     })
   },
-  inputChan: function (e) {
+  inputChanDL: function (e) {
     this.setData({
-      channel: e.detail.value
+      chanDL: e.detail.value,
+      chanUL: -1,
+    })
+  },
+  inputChanUL: function (e) {
+    this.setData({
+      chanUL: e.detail.value,
+      chanDL: -1,
     })
   },
   selectBandInternal: function(index, bandTabIndex) {
@@ -122,13 +311,29 @@ Page({
       var item = this.data.itemsFDDswiper[this.data.swiperpage][index]
     }
     this.setData({
+      index: index,
       band: item.band,
-      chanL: item.chanL,
-      chanH: item.chanH,
-      freqOffsetDL: item.freqOffsetDL,
-      freqOffsetUL: item.freqOffsetUL,
-      chanPrompt: "" + item.chanL + "-" + item.chanH
+      value: item.value,
+      bandwidths: item.bandwidths,
+      chanSpacing: item.spacing,
+      DL: item.DL,
+      UL: item.UL,
+      chanPromptDL: item.DL.chanRange,
+      chanPromptUL: item.UL.chanRange,
+      textchanUL: "",
+      textchanDL: "",
+      textFreqDL: "",
+      textFreqUL: "",
     })
+    if (item.type.indexOf('DL') >=0) {
+      this.setData({
+        isDLOnly: true
+      })
+    } else {
+      this.setData({
+        isDLOnly: false
+      })
+    }
   },
   selectBand: function (e) {
     var index = e.currentTarget.dataset.index
@@ -138,42 +343,64 @@ Page({
     this.selectBandInternal(this.data.index, this.data.bandTabIndex)
   },
   calculateFreq: function () {
-    if (this.data.channel < this.data.chanL || this.data.channel > this.data.chanH)
-    {
-      wx.showModal({
-        content: '请输入正确的channel',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-          }
-        }
-      })
-      return
-    } else {
-      if (this.data.bandTabIndex == 0) {
-        this.setData({
-          freqDL: (this.data.channel - this.data.chanL) * 0.1 + this.data.freqOffsetDL,
-          freqUL: (this.data.channel - this.data.chanL) * 0.1 + this.data.freqOffsetUL
-        })
-      } else {
-        this.setData({
-          freqDL: (this.data.channel - this.data.chanL) * 0.1 + this.data.freqOffsetDL,
-          freqUL: (this.data.channel - this.data.chanL) * 0.1 + this.data.freqOffsetDL
-        })
-      }
+    var chanRangeNum = this.data.DL.chanBegins.length
+    var chanDL = this.data.chanDL
+    var chanUL = this.data.chanUL
 
-      this.setData({
-        textFreqDL: this.data.freqDL.toFixed(1),
-        textFreqUL: this.data.freqUL.toFixed(1),
-      })
+    if (chanDL >= 0) {
+      for (var i = 0; i < chanRangeNum; i++) {
+        if (chanDL >= this.data.DL.chanBegins[i] && chanDL <= this.data.DL.chanEnds[i]) {
+          break;
+        }
+      }
+    } else if (chanDL < 0 && chanUL >= 0) {
+      for (var i = 0; i < chanRangeNum; i++) {
+        if (chanUL >= this.data.UL.chanBegins[i] && chanUL <= this.data.UL.chanEnds[i]) {
+          break;
+        }
+      }
+    } else {
+      this.ErrMsg('Please input correct channel')
+      return
     }
+
+    if (i >= chanRangeNum) {
+      this.ErrMsg('Please input correct channel')
+      return
+    }
+
+    if (chanDL >= 0) {
+      chanUL = chanDL - this.data.DL.chanBegins[i] + this.data.UL.chanBegins[i]
+    } else if (chanDL < 0 && chanUL >= 0) {
+      chanDL = chanUL - this.data.UL.chanBegins[i] + this.data.DL.chanBegins[i]
+    }
+
+    this.setData({
+      chanDL: chanDL,
+      chanUL: chanUL
+    })
+
+    this.setData({
+      textchanUL: this.data.chanUL,
+      textchanDL: this.data.chanDL,
+      freqDL: (chanDL - this.data.DL.chanBegins[i]) * this.data.chanSpacing + this.data.DL.freqBase[i],
+      freqUL: (chanUL - this.data.UL.chanBegins[i]) * this.data.chanSpacing + this.data.UL.freqBase[i]
+    })
+
+    this.setData({
+      textFreqDL: this.data.freqDL.toFixed(1),
+      textFreqUL: this.data.freqUL.toFixed(1),
+    })
   },
   navbarClick: function (e) {
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
       bandTabIndex: e.currentTarget.id
-    });
+    })
+    this.setData({
+      index: 0
+    })
+    this.selectBandInternal(this.data.index, this.data.bandTabIndex)
   },
   fddSwiper: function (e) {
     console.log(e)
