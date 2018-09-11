@@ -1,0 +1,73 @@
+{
+  band: 33, name: 'B33', type: 'tdd', spacing: 0.1, bandwidths: [5,10,15,20], 
+  DL: { chanRange: ["36000-36199"], chanBegins: [36000], chanEnds: [36199], freqBase: [1900], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 34, name: 'B34', type: 'tdd', spacing: 0.1, bandwidths: [5,10,15], 
+  DL: { chanRange: ["36200-36349"], chanBegins: [36200], chanEnds: [36349], freqBase: [2010], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 35, name: 'B35', type: 'tdd', spacing: 0.1, bandwidths: [1.4,3,5,10,15,20], 
+  DL: { chanRange: ["36350-36949"], chanBegins: [36350], chanEnds: [36949], freqBase: [1850], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 36, name: 'B36', type: 'tdd', spacing: 0.1, bandwidths: [1.4,3,5,10,15,20], 
+  DL: { chanRange: ["36950-37549"], chanBegins: [36950], chanEnds: [37549], freqBase: [1930], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 37, name: 'B37', type: 'tdd', spacing: 0.1, bandwidths: [5,10,15,20], 
+  DL: { chanRange: ["37550-37749"], chanBegins: [37550], chanEnds: [37749], freqBase: [1910], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 38, name: 'B38', type: 'tdd', spacing: 0.1, bandwidths: [5,10,15,20], 
+  DL: { chanRange: ["37750-38249"], chanBegins: [37750], chanEnds: [38249], freqBase: [2570], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 39, name: 'B39', type: 'tdd', spacing: 0.1, bandwidths: [5,10,15,20], 
+  DL: { chanRange: ["38250-38649"], chanBegins: [38250], chanEnds: [38649], freqBase: [1880], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 40, name: 'B40', type: 'tdd', spacing: 0.1, bandwidths: [5,10,15,20], 
+  DL: { chanRange: ["38650-38949"], chanBegins: [38650], chanEnds: [38949], freqBase: [2300], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 41, name: 'B41', type: 'tdd', spacing: 0.1, bandwidths: [5,10,15,20], 
+  DL: { chanRange: ["39650-41589"], chanBegins: [39650], chanEnds: [41589], freqBase: [2496], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 42, name: 'B42', type: 'tdd', spacing: 0.1, bandwidths: [5,10,15,20], 
+  DL: { chanRange: ["41590-43589"], chanBegins: [41590], chanEnds: [43589], freqBase: [3400], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 43, name: 'B43', type: 'tdd', spacing: 0.1, bandwidths: [5,10,15,20], 
+  DL: { chanRange: ["43590-45589"], chanBegins: [43590], chanEnds: [45589], freqBase: [3600], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 44, name: 'B44', type: 'tdd', spacing: 0.1, bandwidths: [3,5,10,15,20], 
+  DL: { chanRange: ["45590-46589"], chanBegins: [45590], chanEnds: [46589], freqBase: [703], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 45, name: 'B45', type: 'tdd', spacing: 0.1, bandwidths: [5,10,15,20], 
+  DL: { chanRange: ["46590-46789"], chanBegins: [46590], chanEnds: [46789], freqBase: [1447], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 46, name: 'B46', type: 'tdd', spacing: 0.1, bandwidths: [10,20], 
+  DL: { chanRange: ["46790-54539"], chanBegins: [46790], chanEnds: [54539], freqBase: [5150], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 47, name: 'B47', type: 'tdd', spacing: 0.1, bandwidths: [10,20], 
+  DL: { chanRange: ["54540-55239"], chanBegins: [54540], chanEnds: [55239], freqBase: [5855], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 48, name: 'B48', type: 'tdd', spacing: 0.1, bandwidths: [5,10,15,20], 
+  DL: { chanRange: ["55240-56739"], chanBegins: [55240], chanEnds: [56739], freqBase: [3550], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 50, name: 'B50', type: 'tdd', spacing: 0.1, bandwidths: [3,5,10,15,20], 
+  DL: { chanRange: ["58240-59089"], chanBegins: [58240], chanEnds: [59089], freqBase: [1432], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 51, name: 'B51', type: 'tdd', spacing: 0.1, bandwidths: [5], 
+  DL: { chanRange: ["59090-59139"], chanBegins: [59090], chanEnds: [59139], freqBase: [1427], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},

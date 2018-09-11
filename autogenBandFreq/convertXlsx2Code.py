@@ -1,11 +1,40 @@
 import csv
 
-filename = r'.\GSM.csv'
-ag_filename = r'.\ag_gsm.txt'
+filename = r'.\CDMA.csv'
+ag_filename = r'.\ag_cdma.txt'
+
+isLTE = False
+isTDD = False
 
 with open(filename) as f, open(ag_filename, 'w') as f_ag:
     reader = csv.DictReader(f)
+
     for row in reader:
+        isDLOnly = False
+        spacing = 0
+
+        if 'DL Only' in row['Type']:
+            type = 'DL'
+            isDLOnly = True
+        elif 'TDD' in row['Type']:
+            type = 'tdd'
+        else:
+            type = 'default'
+
+        band_info = '{\n  '
+        band_info += 'band: ' + row['Band'] + ', '
+        band_info += 'name: \'' + row['Band(str)'] + '\', '
+        band_info += 'type: \'' + type + '\', '
+
+        ## spacing of different channels on BC5 of CDMA could be different
+        if ',' in row['Channel Spacing']:
+            band_info += 'spacing: [' + row['Channel Spacing'] + '], '
+        else:
+            band_info += 'spacing: ' + row['Channel Spacing'] + ', '
+
+        if isLTE:
+            band_info += 'bandwidths: [' + row['Bandwidths'] + '], '
+
         dl_chan_range = row['DL Channel Range']
         dl_chan_begins = ''
         dl_chan_ends = ''
@@ -48,15 +77,12 @@ with open(filename) as f, open(ag_filename, 'w') as f_ag:
 
             ul_chan_range = new_chan_range
         else:
-            ul_chan_begins = row['UL Channel Range'].split('-')[0]
-            ul_chan_ends = row['UL Channel Range'].split('-')[1]
-            ul_chan_range = '\"' + ul_chan_range + '\"'
-
-        band_info = '{\n  '
-        band_info += 'band: ' + row['Band'] + ', '
-        band_info += 'name: \'' + row['Band(str)'] + '\', '
-        band_info += 'type: \'' + row['Type'] + '\', '
-        band_info += 'spacing: ' + row['Channel Spacing'] + ', '
+            if isDLOnly or isTDD:
+                ul_chan_range = ''
+            else:
+                ul_chan_begins = row['UL Channel Range'].split('-')[0]
+                ul_chan_ends = row['UL Channel Range'].split('-')[1]
+                ul_chan_range = '\"' + ul_chan_range + '\"'
 
         band_info += '\n  '
         band_info += 'DL: { '
@@ -77,7 +103,3 @@ with open(filename) as f, open(ag_filename, 'w') as f_ag:
         print(band_info)
 
         f_ag.write(band_info)
-
-
-
-
