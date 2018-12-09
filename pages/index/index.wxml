@@ -6,4 +6,5 @@
   <button bindtap="gotoTDS">TD-SCDMA</button>
   <button bindtap="gotoWCDMA">WCDMA</button>
   <button bindtap="gotoCDMA">CDMA</button>
+  <button bindtap="gotoNRsub6">NRsub6</button>
 </view>

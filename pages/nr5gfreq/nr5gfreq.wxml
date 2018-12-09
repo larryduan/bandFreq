@@ -1,0 +1,81 @@
+<!--nr5gfreq.wxml-->
+<view class="page">
+  <view class="page__hd show-bg">
+      <view class="page__title">NR5G</view>
+  </view>
+  <view class="page__bd page__bd_spacing show-bg">
+    <view class="weui-tab show-bg">
+      <view class="weui-navbar show-bg">
+        <block wx:for="{{tabs}}" wx:key="*this">
+            <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="navbarClick">
+                <view class="weui-navbar__title">{{item}}</view>
+            </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="button-sp-area">
+          <view class="weui-tab__content" hidden="{{bandTabIndex != 0}}">
+            <button wx:for="{{itemsFD}}" wx:key="band" bindtap="selectBand" class="weui-btn mini-btn lte-btn" id="{{item.band}}" data-index="{{index}}" type="{{band == item.band ? 'primary':'default'}}" size="mini">{{item.name}}</button>
+          </view>
+          <view class="weui-tab__content" hidden="{{bandTabIndex != 1}}">
+            <button wx:for="{{itemsTD}}" wx:key="band" bindtap="selectBand" class="weui-btn mini-btn lte-btn" id="{{item.band}}" data-index="{{index}}" type="{{band == item.band ? 'primary':'default'}}" size="mini">{{item.name}}</button>
+          </view>
+          <view class="weui-tab__content" hidden="{{bandTabIndex != 2}}">
+            <button wx:for="{{itemsSD}}" wx:key="band" bindtap="selectBand" class="weui-btn mini-btn lte-btn" id="{{item.band}}" data-index="{{index}}" type="{{band == item.band ? 'primary':'default'}}" size="mini">{{item.name}}</button>
+          </view>
+          <view class="weui-tab__content" hidden="{{bandTabIndex != 3}}">
+            <button wx:for="{{itemsSU}}" wx:key="band" bindtap="selectBand" class="weui-btn mini-btn lte-btn" id="{{item.band}}" data-index="{{index}}" type="{{band == item.band ? 'primary':'default'}}" size="mini">{{item.name}}</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="show-bg" hidden="{{bandTabIndex != 0}}">
+  <view class="show-bg">
+    <text>Valid UL Channels:</text>
+    <text style="color:gray" decode="{{true}}">&nbsp;[{{chanPromptUL}}]</text>
+    <input bindinput="inputChanUL" type="number" style="color:green" placeholder='input here' value="{{textchanUL}}"></input>
+    <text decode="{{true}}">Frequency(MHz):&nbsp;&nbsp;</text>
+    <text style="color:green">{{textFreqUL}}</text>
+  </view>
+  <view class="show-bg">
+    <text>Valid DL Channels:</text>
+    <text style="color:gray" decode="{{true}}">&nbsp;[{{chanPromptDL}}]</text>
+    <input bindinput="inputChanDL" type="number" style="color:green" placeholder='input here' value="{{textchanDL}}"></input>
+    <text decode="{{true}}">Frequency(MHz):&nbsp;&nbsp;</text>
+    <text style="color:green">{{textFreqDL}}</text>
+  </view>
+</view>
+<view class="show-bg" hidden="{{bandTabIndex != 1}}">
+  <view>
+    <text>Valid Channels:</text>
+    <text style="color:gray" decode="{{true}}">&nbsp;[{{chanPromptDL}}]</text>
+    <input bindinput="inputChanDL" type="number" style="color:green" placeholder='input here' value="{{textchanDL}}"></input>
+    <text decode="{{true}}">Frequency(MHz):&nbsp;&nbsp;</text>
+    <text style="color:green">{{textFreqDL}}</text>
+  </view>
+</view>
+<view class="show-bg" hidden="{{bandTabIndex != 2}}">
+  <view>
+    <text>Valid Channels:</text>
+    <text style="color:gray" decode="{{true}}">&nbsp;[{{chanPromptDL}}]</text>
+    <input bindinput="inputChanDL" type="number" style="color:green" placeholder='input here' value="{{textchanDL}}"></input>
+    <text decode="{{true}}">Frequency(MHz):&nbsp;&nbsp;</text>
+    <text style="color:green">{{textFreqDL}}</text>
+  </view>
+</view>
+<view class="show-bg" hidden="{{bandTabIndex != 3}}">
+  <view>
+    <text>Valid Channels:</text>
+    <text style="color:gray" decode="{{true}}">&nbsp;[{{chanPromptUL}}]</text>
+    <input bindinput="inputChanUL" type="number" style="color:green" placeholder='input here' value="{{textchanUL}}"></input>
+    <text decode="{{true}}">Frequency(MHz):&nbsp;&nbsp;</text>
+    <text style="color:green">{{textFreqUL}}</text>
+  </view>
+</view>
+<view class="button-sp-area">
+  <button class="weui-btn" type="primary" bindtap="calculateFreq">get frequency</button>
+</view>

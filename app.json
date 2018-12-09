@@ -5,7 +5,8 @@
     "pages/ltefreq/ltefreq",
     "pages/tdsfreq/tdsfreq",
     "pages/wfreq/wfreq",
-    "pages/cfreq/cfreq"
+    "pages/cfreq/cfreq",
+    "pages/nr5gfreq/nr5gfreq"
   ],
   "window": {
     "backgroundTextStyle": "light",
