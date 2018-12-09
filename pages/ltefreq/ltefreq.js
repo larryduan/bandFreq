@@ -86,7 +86,10 @@ Page({
           band: 17, name: 'B17', type: 'default', spacing: 0.1, bandwidths: [5, 10],
           DL: { chanRange: ["5730-5849"], chanBegins: [5730], chanEnds: [5849], freqBase: [734], },
           UL: { chanRange: ["23730-23849"], chanBegins: [23730], chanEnds: [23849], freqBase: [704], },
-        }, {
+        }, 
+      ],
+      [  
+        {
           band: 18, name: 'B18', type: 'default', spacing: 0.1, bandwidths: [5, 10, 15],
           DL: { chanRange: ["5850-5999"], chanBegins: [5850], chanEnds: [5999], freqBase: [860], },
           UL: { chanRange: ["23859-23999"], chanBegins: [23859], chanEnds: [23999], freqBase: [815], },
@@ -106,10 +109,7 @@ Page({
           band: 22, name: 'B22', type: 'default', spacing: 0.1, bandwidths: [5, 10, 15, 20],
           DL: { chanRange: ["6600-7399"], chanBegins: [6600], chanEnds: [7399], freqBase: [3510], },
           UL: { chanRange: ["24600-25399"], chanBegins: [24600], chanEnds: [25399], freqBase: [3410], },
-        },
-      ],
-      [
-        {
+        }, {
           band: 23, name: 'B23', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10, 15, 20],
           DL: { chanRange: ["7500-7688"], chanBegins: [7500], chanEnds: [7688], freqBase: [2180], },
           UL: { chanRange: ["25500-25699"], chanBegins: [25500], chanEnds: [25699], freqBase: [2000], },
@@ -149,7 +149,10 @@ Page({
           band: 32, name: 'B32', type: 'DL', spacing: 0.1, bandwidths: [5, 10, 15, 20],
           DL: { chanRange: ["9920-10359"], chanBegins: [9920], chanEnds: [10359], freqBase: [1452], },
           UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
-        }, {
+        },
+      ],
+      [  
+        {
           band: 65, name: 'B65', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10, 15, 20],
           DL: { chanRange: ["65536-66435"], chanBegins: [65536], chanEnds: [66435], freqBase: [2110], },
           UL: { chanRange: ["131072-131971"], chanBegins: [131072], chanEnds: [131971], freqBase: [1920], },
@@ -179,8 +182,12 @@ Page({
           UL: { chanRange: ["133122-133471"], chanBegins: [133122], chanEnds: [133471], freqBase: [663], },
         }, {
           band: 72, name: 'B72', type: 'default', spacing: 0.1, bandwidths: [5],
-          DL: { chanRange: ["68963-68985"], chanBegins: [68963], chanEnds: [68985], freqBase: [461], },
+          DL: { chanRange: ["68936-68985"], chanBegins: [68936], chanEnds: [68985], freqBase: [461], },
           UL: { chanRange: ["133472-133521"], chanBegins: [133472], chanEnds: [133521], freqBase: [451], },
+        }, {
+          band: 73, name: 'B73', type: 'default', spacing: 0.1, bandwidths: [5],
+          DL: { chanRange: ["68986-69035"], chanBegins: [68986], chanEnds: [69035], freqBase: [460], },
+          UL: { chanRange: ["133522-133571"], chanBegins: [133522], chanEnds: [133571], freqBase: [450], },
         }, {
           band: 74, name: 'B74', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10, 15, 20],
           DL: { chanRange: ["69036-69465"], chanBegins: [69036], chanEnds: [69465], freqBase: [1475], },
@@ -189,13 +196,14 @@ Page({
           band: 75, name: 'B75', type: 'DL', spacing: 0.1, bandwidths: [5, 10, 15, 20],
           DL: { chanRange: ["69466-70315"], chanBegins: [69466], chanEnds: [70315], freqBase: [1432], },
           UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
-        },
-      ],
-      [
-        {
+        }, {
           band: 76, name: 'B76', type: 'DL', spacing: 0.1, bandwidths: [5],
           DL: { chanRange: ["70316-70365"], chanBegins: [70316], chanEnds: [70365], freqBase: [1427], },
           UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+        }, {
+          band: 85, name: 'B85', type: 'default', spacing: 0.1, bandwidths: [5, 10],
+          DL: { chanRange: ["70366-70545"], chanBegins: [70366], chanEnds: [70545], freqBase: [728], },
+          UL: { chanRange: ["134002-134181"], chanBegins: [134002], chanEnds: [134181], freqBase: [698], },
         }, {
           band: 252, name: 'B252', type: 'DL', spacing: 0.1, bandwidths: [20],
           DL: { chanRange: ["255144-256143"], chanBegins: [255144], chanEnds: [256143], freqBase: [5150], },
@@ -238,7 +246,7 @@ Page({
         UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
       }, {
         band: 40, name: 'B40', type: 'tdd', spacing: 0.1, bandwidths: [5, 10, 15, 20],
-        DL: { chanRange: ["38650-38949"], chanBegins: [38650], chanEnds: [38949], freqBase: [2300], },
+        DL: { chanRange: ["38650-39649"], chanBegins: [38650], chanEnds: [39649], freqBase: [2300], },
         UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
       }, {
         band: 41, name: 'B41', type: 'tdd', spacing: 0.1, bandwidths: [5, 10, 15, 20],
@@ -273,12 +281,20 @@ Page({
         DL: { chanRange: ["55240-56739"], chanBegins: [55240], chanEnds: [56739], freqBase: [3550], },
         UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
       }, {
+        band: 49, name: 'B49', type: 'tdd', spacing: 0.1, bandwidths: [10, 20],
+        DL: { chanRange: ["56740-58239"], chanBegins: [56740], chanEnds: [58239], freqBase: [3550], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
         band: 50, name: 'B50', type: 'tdd', spacing: 0.1, bandwidths: [3, 5, 10, 15, 20],
         DL: { chanRange: ["58240-59089"], chanBegins: [58240], chanEnds: [59089], freqBase: [1432], },
         UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
       }, {
         band: 51, name: 'B51', type: 'tdd', spacing: 0.1, bandwidths: [5],
         DL: { chanRange: ["59090-59139"], chanBegins: [59090], chanEnds: [59139], freqBase: [1427], },
+        UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+      }, {
+        band: 52, name: 'B52', type: 'tdd', spacing: 0.1, bandwidths: [5, 10, 15, 20],
+        DL: { chanRange: ["59140-60139"], chanBegins: [59140], chanEnds: [60139], freqBase: [3300], },
         UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
       },
     ]
