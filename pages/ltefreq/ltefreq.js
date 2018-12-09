@@ -15,7 +15,6 @@ Page({
     band: 1,
     chanDL: 0,
     chanUL: 0,
-    value: 'B1',
     chanPrompt: '',
     freqDL: null,
     freqUL: null,
@@ -329,7 +328,6 @@ Page({
     this.setData({
       index: index,
       band: item.band,
-      value: item.value,
       bandwidths: item.bandwidths,
       chanSpacing: item.spacing,
       DL: item.DL,

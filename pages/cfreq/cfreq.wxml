@@ -12,9 +12,12 @@
   </view>
 </view>
 <view class="show-bg">
-  <text decode="{{true}}">&nbsp;&nbsp;Channel Number:\n</text>
+  <view class="flex-row" style="display: flex;flex-direction: row;">
+    <text>Channel Number:</text>
+    <text decode="{{true}}">&nbsp;</text>
+    <input bindinput="inputChan" type="number" style="color:green" placeholder='input here'></input>
+  </view>
   <text style="color:gray" decode="{{true}}">&nbsp;&nbsp;[{{chanPromptDL}}]</text>
-  <input bindinput="inputChan" type="number" style="color:green" placeholder='input here'></input>
 </view>
 <view class="show-bg" hidden="{{isDLOnly}}">
   <view>
