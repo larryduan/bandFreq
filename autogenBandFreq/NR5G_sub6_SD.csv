@@ -1,0 +1,3 @@
+Band,Band(str),DL Channel Range,UL Channel Range,DL Frequency Base,UL Frequency Base,Channel Spacing,Type
+75,n75,286400-303400,,1432,,0.005,SD
+76,n76,285400-286400,,1427,,0.005,SD

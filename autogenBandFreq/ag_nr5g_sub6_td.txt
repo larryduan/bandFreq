@@ -1,0 +1,41 @@
+{
+  band: 34, name: 'n34', type: 'default', spacing: 0.005, 
+  DL: { chanRange: ["402000-405000"], chanBegins: [402000], chanEnds: [405000], freqBase: [2010], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 38, name: 'n38', type: 'default', spacing: 0.005, 
+  DL: { chanRange: ["514000-524000"], chanBegins: [514000], chanEnds: [524000], freqBase: [2570], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 39, name: 'n39', type: 'default', spacing: 0.005, 
+  DL: { chanRange: ["376000-384000"], chanBegins: [376000], chanEnds: [384000], freqBase: [1880], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 40, name: 'n40', type: 'default', spacing: 0.005, 
+  DL: { chanRange: ["460000-480000"], chanBegins: [460000], chanEnds: [480000], freqBase: [2300], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 41, name: 'n41', type: 'default', spacing: 0.015, 
+  DL: { chanRange: ["499200-537999"], chanBegins: [499200], chanEnds: [537999], freqBase: [2496], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 50, name: 'n50', type: 'default', spacing: 0.005, 
+  DL: { chanRange: ["286400-303400"], chanBegins: [286400], chanEnds: [303400], freqBase: [1432], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 51, name: 'n51', type: 'default', spacing: 0.005, 
+  DL: { chanRange: ["285400-286400"], chanBegins: [285400], chanEnds: [286400], freqBase: [1427], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 77, name: 'n77', type: 'default', spacing: 0.015, 
+  DL: { chanRange: ["620000-680000"], chanBegins: [620000], chanEnds: [680000], freqBase: [3300], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 78, name: 'n78', type: 'default', spacing: 0.015, 
+  DL: { chanRange: ["620000-653333"], chanBegins: [620000], chanEnds: [653333], freqBase: [3300], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 79, name: 'n79', type: 'default', spacing: 0.015, 
+  DL: { chanRange: ["693334-733333"], chanBegins: [693334], chanEnds: [733333], freqBase: [4400], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},

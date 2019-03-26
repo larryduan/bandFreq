@@ -1,0 +1,9 @@
+{
+  band: 75, name: 'n75', type: 'DL', spacing: 0.005, 
+  DL: { chanRange: ["286400-303400"], chanBegins: [286400], chanEnds: [303400], freqBase: [1432], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 76, name: 'n76', type: 'DL', spacing: 0.005, 
+  DL: { chanRange: ["285400-286400"], chanBegins: [285400], chanEnds: [286400], freqBase: [1427], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},
