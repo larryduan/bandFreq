@@ -36,9 +36,14 @@ Page({
       url: '../cfreq/cfreq'
     })
   },
-  gotoNRsub6: function () {
+  gotoNR5G_FR1: function () {
     wx.navigateTo({
       url: '../nr5gfreq/nr5gfreq'
+    })
+  },
+  gotoNR5G_FR2: function () {
+    wx.navigateTo({
+      url: '../nr5gFR2/nr5gFR2'
     })
   },
   /**

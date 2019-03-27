@@ -1,7 +1,7 @@
 <!--nr5gfreq.wxml-->
 <view class="page">
   <view class="page__hd show-bg">
-      <view class="page__title">NR5G</view>
+      <view class="page__title">NR5G-FR1</view>
   </view>
   <view class="page__bd page__bd_spacing show-bg">
     <view class="weui-tab show-bg">

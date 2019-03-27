@@ -1,10 +1,11 @@
 <!--index.wxml-->
 <!--text style='font-size:20px'>Select Technology</text-->
 <view>
-  <button bindtap="gotoGSM">GSM</button>
+  <button bindtap="gotoNR5G_FR1">NR5G-FR1</button>
+  <button bindtap="gotoNR5G_FR2">NR5G-FR2</button>
   <button bindtap="gotoLTE">LTE</button>
-  <button bindtap="gotoTDS">TD-SCDMA</button>
-  <button bindtap="gotoWCDMA">WCDMA</button>
+  <button bindtap="gotoGSM">GSM</button>
   <button bindtap="gotoCDMA">CDMA</button>
-  <button bindtap="gotoNRsub6">NR5G</button>
+  <button bindtap="gotoWCDMA">WCDMA</button>
+  <button bindtap="gotoTDS">TD-SCDMA</button>
 </view>
