@@ -38,7 +38,7 @@ Page({
   },
   gotoNR5G_FR1: function () {
     wx.navigateTo({
-      url: '../nr5gfreq/nr5gfreq'
+      url: '../nr5gFR1/nr5gFR1'
     })
   },
   gotoNR5G_FR2: function () {

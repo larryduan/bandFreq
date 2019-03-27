@@ -1,4 +1,4 @@
-// nr5gfreq.js
+// nr5gFR1.js
 
 var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 
