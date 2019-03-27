@@ -10,24 +10,10 @@ Page({
     freq: null,
     textFreq: "",
 
-    freqRefOffs: 24250.080,
-    chanRefOffs: 2016667,
-    raster: 0.060,
-    bandsInfo: [
-      {
-        band: 257, name: 'n257', 
-        chanInfo: { NRange: ["2054166-2104165"], NFirst: [2054166], NLast: [2104165]},
-      }, {
-        band: 258, name: 'n258', 
-        chanInfo: { NRange: ["2016667-2070832"], NFirst: [2016667], NLast: [2070832]},
-      }, {
-        band: 260, name: 'n260', 
-        chanInfo: { NRange: ["2229166-2279165"], NFirst: [2229166], NLast: [2279165]},
-      }, {
-        band: 261, name: 'n261', 
-        chanInfo: { NRange: ["2070833-2084999"], NFirst: [2070833], NLast: [2084999]},
-      },
-    ],
+    freqRefOffs: null,
+    chanRefOffs: null,
+    raster: null,
+    bandsInfo: null,
   },
   ErrMsg: function (msg) {
     wx.showModal({
@@ -85,25 +71,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var data = require("../../data/nr5gFR2_data.js")
+    
     this.setData({
-      index: 0
+      bandsInfo: data.bandList,
+      freqRefOffs: data.freqRefOffs,
+      chanRefOffs: data.chanRefOffs,
+      raster: data.raster,
     })
-    this.selectBandInternal(this.data.index, 0)
-
-    var that = this;
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-        });
-      }
-    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    this.setData({
+      index: 0
+    })
+    this.selectBandInternal(this.data.index, 0)
   },
 
   /**
