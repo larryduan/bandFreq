@@ -76,7 +76,7 @@ var bandList = {
       DL: { chanRange: ["460000-480000"], chanBegins: [460000], chanEnds: [480000], freqBase: [2300], },
       UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
     }, {
-      band: 41, name: 'n41', type: 'TD', spacing: 0.015,
+      band: 41, name: 'n41', type: 'TD', spacing: 0.005,
       DL: { chanRange: ["499200-537999"], chanBegins: [499200], chanEnds: [537999], freqBase: [2496], },
       UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
     }, {
