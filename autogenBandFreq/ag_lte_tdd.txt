@@ -78,4 +78,8 @@
   band: 52, name: 'B52', type: 'tdd', spacing: 0.1, bandwidths: [5,10,15,20], 
   DL: { chanRange: ["59140-60139"], chanBegins: [59140], chanEnds: [60139], freqBase: [3300], },
   UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+},{
+  band: 53, name: 'B53', type: 'tdd', spacing: 0.1, bandwidths: [], 
+  DL: { chanRange: ["60140-60254"], chanBegins: [60140], chanEnds: [60254], freqBase: [2483.5], },
+  UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
 },

@@ -19,3 +19,4 @@ Band,Band(str),DL Channel Range,UL Channel Range,DL Frequency Base,UL Frequency 
 50,B50,58240-59089,,1432,,0.1,TDD,"3,5,10,15,20"
 51,B51,59090-59139,,1427,,0.1,TDD,5
 52,B52,59140-60139,,3300,,0.1,TDD,"5,10,15,20"
+53,B53,60140-60254,,2483.5,,0.1,TDD,

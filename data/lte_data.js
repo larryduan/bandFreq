@@ -3,7 +3,7 @@ var bandList = {
     [
       {
         band: 1, name: 'B1', type: 'default', spacing: 0.1, bandwidths: [5, 10, 15, 20],
-        DL: { chanRange: ["0-599"], chanBegins: [0], chanEnds: [599], freqBase: [2100], },
+        DL: { chanRange: ["0-599"], chanBegins: [0], chanEnds: [599], freqBase: [2110], },
         UL: { chanRange: ["18000-18599"], chanBegins: [18000], chanEnds: [18599], freqBase: [1920], },
       }, {
         band: 2, name: 'B2', type: 'default', spacing: 0.1, bandwidths: [1.4, 3, 5, 10, 15, 20],
@@ -180,6 +180,17 @@ var bandList = {
         DL: { chanRange: ["70366-70545"], chanBegins: [70366], chanEnds: [70545], freqBase: [728], },
         UL: { chanRange: ["134002-134181"], chanBegins: [134002], chanEnds: [134181], freqBase: [698], },
       }, {
+        band: 87, name: 'B87', type: 'default', spacing: 0.1, bandwidths: [],
+        DL: { chanRange: ["70546-70595"], chanBegins: [70546], chanEnds: [70595], freqBase: [420], },
+        UL: { chanRange: ["134182-134231"], chanBegins: [134182], chanEnds: [134231], freqBase: [410], },
+      }, {
+        band: 88, name: 'B88', type: 'default', spacing: 0.1, bandwidths: [],
+        DL: { chanRange: ["70596-70645"], chanBegins: [70596], chanEnds: [70645], freqBase: [422], },
+        UL: { chanRange: ["134232-134281"], chanBegins: [134232], chanEnds: [134281], freqBase: [412], },
+      }, 
+    ],
+    [
+      {
         band: 252, name: 'B252', type: 'DL', spacing: 0.1, bandwidths: [20],
         DL: { chanRange: ["255144-256143"], chanBegins: [255144], chanEnds: [256143], freqBase: [5150], },
         UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
@@ -270,6 +281,10 @@ var bandList = {
     }, {
       band: 52, name: 'B52', type: 'tdd', spacing: 0.1, bandwidths: [5, 10, 15, 20],
       DL: { chanRange: ["59140-60139"], chanBegins: [59140], chanEnds: [60139], freqBase: [3300], },
+      UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
+    }, {
+      band: 53, name: 'B53', type: 'tdd', spacing: 0.1, bandwidths: [],
+      DL: { chanRange: ["60140-60254"], chanBegins: [60140], chanEnds: [60254], freqBase: [2483.5], },
       UL: { chanRange: [], chanBegins: [], chanEnds: [], freqBase: [], },
     },
   ]

@@ -1,10 +1,10 @@
 import csv
 
 isLTE = True
-isTDD = False
+isTDD = True
 
-filename = r'.\LTE_FDD.csv'
-ag_filename = r'.\ag_lte_fdd.txt'
+filename = r'.\LTE_TDD.csv'
+ag_filename = r'.\ag_lte_tdd.txt'
 
 
 
